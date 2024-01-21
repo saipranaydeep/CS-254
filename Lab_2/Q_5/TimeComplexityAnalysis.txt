@@ -1,0 +1,3 @@
+Time complexity of the code is O(n)
+The best case, average case and worst case time complexities are O(n)
+Because the loop iterates entire array only once.
