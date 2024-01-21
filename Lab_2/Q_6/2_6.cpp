@@ -95,6 +95,6 @@ int main(){
     for(int i = 0; i < size; i++) cin >> arr[i];
 
     quickSort(arr, 0, size - 1);
-
+    cout<<"The array after sorting with quick sort algorithm using median as pivot :\n";
     for(int i = 0; i < size; i++) cout << arr[i] << " ";
 }

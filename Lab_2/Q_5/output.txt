@@ -1,1 +1,1 @@
--32767 -32767
+First smallest element is -32767 and Second smallest element is -32767

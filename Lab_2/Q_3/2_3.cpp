@@ -41,5 +41,6 @@ int main() {
 
     mergeSort(arr, 0, size - 1);
 
+    cout << "After sorting the array using inplace merge sort algorithm : \n";
     for(int i = 0; i < size; i++) cout << arr[i] << " ";
 }

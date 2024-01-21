@@ -60,6 +60,7 @@ int main(){
 
     median(arr, 0, size - 1, size/2, a, b);
 
-    if(size&1) cout << b << "\n";
-    else cout << a << ", " << b << " = " << (a + b) / 2.0 << "\n";
+    
+    if(size&1) cout << "The median of the array is " << b << "\n";
+    else cout << "The medians of the array are " << a << " and " << b << "\n";
 }

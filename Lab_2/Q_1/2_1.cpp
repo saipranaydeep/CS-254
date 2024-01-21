@@ -81,13 +81,16 @@ int main(){
 
     freopen("MergeOutput.txt","w",stdout);    
     Merge = mergeArrays(array1, array2);
+    cout << "After merging two arrays the elements are : \n";
     for(auto x: Merge) cout<<x<<" ";
 
     freopen("UnionOutput.txt","w",stdout);    
     Union = unionArray(array1, array2);
+    cout << "After making union of two arrays the elements are : \n";
     for(auto x: Union) cout<<x<<" ";
 
     freopen("IntersectionOutput.txt","w",stdout);    
     Intersection = intersectionArray(array1, array2);
+    cout << "After making intersection of two arrays the elements are : \n";
     for(auto x: Intersection) cout<<x<<" ";
 }

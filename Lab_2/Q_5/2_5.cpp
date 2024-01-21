@@ -26,6 +26,6 @@ int main() {
         }
     }
 
-    cout << first_small << " " << second_small << "\n";
+    cout << "First smallest element is " << first_small << " and Second smallest element is " << second_small << "\n";
 
 }

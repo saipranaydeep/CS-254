@@ -32,5 +32,6 @@ int main() {
 
     merge(arr, 0, m, m + n);
 
+    cout << "Array fter sorting the array with inplace algorithm : \n";
     for(int i = 0; i < n + m; i++) cout << arr[i] << " ";
 }
