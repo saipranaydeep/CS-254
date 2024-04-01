@@ -24,9 +24,7 @@ int main() {
     sort(jobs.begin(), jobs.end(), [](const pair<string, pair<int, int>>& a, const pair<string, pair<int, int>>& b){
         return a.second.second > b.second.second;
     });
-    for(int i = 0; i < n; i++) {
-        cout<<jobs[i].first<<" "<<jobs[i].second.first<<" "<<jobs[i].second.second<<"\n";
-    }
+
     for(int i = 0; i < n; i++) {
         int deadline = jobs[i].second.first;
         int profit = jobs[i].second.second;
