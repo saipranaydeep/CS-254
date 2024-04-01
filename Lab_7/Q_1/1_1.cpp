@@ -5,7 +5,7 @@ int knapsack_10(int i, int w, string* items, vector<vector<int>> k, vector<vecto
     if(w < 0 || i < 0) return INT_MIN;
     if(dp[i][w] != -1) return dp[i][w];
 
-    if(i == 0 || w == 0) return dp[i][w] == 0;
+    if(i == 0 || w == 0) return dp[i][w] = 0;
     if(w < k[i-1][1]) return dp[i][w] = knapsack_10(i-1, w, items, k, dp, to_include);
 
     return dp[i][w] = max(k[i - 1][2] + knapsack_10(i - 1, w - k[i - 1][1], items, k, dp, to_include), knapsack_10(i - 1, w, items, k, dp, to_include));

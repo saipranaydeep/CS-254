@@ -1,62 +1,45 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
 using namespace std;
 
-void solution(vector <vector<int>> jobs, string names[]){
-    int n = jobs.size();
-
-    sort(jobs.begin(), jobs.end(), [](const vector<int>&a, const vector<int>&b){
-        return a[1] <= b[1];
-    });
-
-    int max_total = INT_MIN;
-    int local_max = INT_MIN;
-    int local_max_id = 0; 
-    int curr_profit = INT_MIN;
-    int curr_deadline = 0;
-
-    cout << "Following is the maximum profit sequence of jobs: [ ";
-    for(auto job : jobs){
-        curr_profit = job[2];
-        if(job[1] == curr_deadline){
-            if(local_max < curr_profit){
-                local_max = curr_profit;
-                local_max_id = job[0];
-            }
-        }
-        else{
-            max_total += local_max;
-            if(curr_profit != 0){ cout << names[local_max_id] << " "; } // if condition is to avoid printing the last job again 
-            local_max = curr_profit;
-            curr_deadline = job[1];
-        }
-    }
-    cout << "], Total profit = " << max_total << endl;
-
-}
-
-int main(){
+int main() {
     freopen("input.txt", "r", stdin);
-    freopen("output1.txt", "w", stdout);
+    freopen("output.txt", "w", stdout);
 
-    int T; 
-    cin >> T;
-    while(T--){
-        int n; 
-        cin >> n;
-        string *job_names = new string[n+1];
-        vector <vector<int>> jobs(n+1, vector<int>(4));
-        for(int i = 0; i < n; i++){
-            jobs[i][0] = i;
-            cin >> job_names[i];
-        }
-        for(int i = 0; i < n; i++) cin >> jobs[i][1];
-        for(int i = 0; i < n; i++) cin >> jobs[i][2];
-
-        job_names[n] = "padding";
-        jobs[n][0] = n;
-        jobs[n][1] = INT_MAX;
-        jobs[n][2] = 0;
-
-        solution(jobs, job_names);
+    int n;
+    cin >> n;
+    vector<pair<string, pair<int,int>>> jobs(n);
+    int max_deadline = 0;
+    for(int i = 0; i < n; i++){
+        cin >> jobs[i].first;
+        cin >> jobs[i].second.first;
+        cin >> jobs[i].second.second;
+        max_deadline = max(max_deadline, jobs[i].second.first);
     }
+    int max_profit = 0;
+    vector<string> vis(max_deadline, "null");
+    sort(jobs.begin(), jobs.end(), [](const pair<string, pair<int, int>>& a, const pair<string, pair<int, int>>& b){
+        return a.second.second > b.second.second;
+    });
+    for(int i = 0; i < n; i++) {
+        cout<<jobs[i].first<<" "<<jobs[i].second.first<<" "<<jobs[i].second.second<<"\n";
+    }
+    for(int i = 0; i < n; i++) {
+        int deadline = jobs[i].second.first;
+        int profit = jobs[i].second.second;
+        while(deadline >= 1 && vis[deadline-1] != "null") {
+            deadline--;
+        }
+        if(deadline >= 1){
+            vis[deadline-1] = jobs[i].first;
+            max_profit += profit;
+        }
+    }
+    cout << "Following is the maximum profit sequence of jobs: [";
+    for(string x : vis) if(x != "null") cout << x << " ";
+    cout << "], Total Profit = " << max_profit << "\n";
+    return 0;
 }

@@ -1,0 +1,5 @@
+a 4 100
+c 1 40
+d 1 30
+b 1 10
+Following is the maximum profit sequence of jobs: [c a ], Total Profit = 140
