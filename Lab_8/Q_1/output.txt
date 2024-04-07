@@ -1,0 +1,5 @@
+The minimum spanning tree is :
+Edge 2 -- 3 having weight 4
+Edge 0 -- 3 having weight 5
+Edge 0 -- 1 having weight 10
+Minimum Cost Spanning Tree: 19
