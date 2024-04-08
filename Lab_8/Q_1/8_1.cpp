@@ -1,7 +1,6 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-
 class DSU { 
 	int* parent; 
 	int* rank; 
@@ -50,23 +49,26 @@ public:
         this->V = V; 
     } 
 
+	static bool compare(const std::vector<int>& a, const std::vector<int>& b) {
+ 		return a[0] > b[0];
+	}
+
 	void addEdge(int x, int y, int w){ 
 		Edges.push_back({ w, x, y }); 
 	} 
 
 	void MST(){ 
-		sort(Edges.begin(), Edges.end()); 
+		sort(Edges.begin(), Edges.end(), compare); 
 
 		DSU s(V); 
 		int minPath = 0; 
 
-		cout << "The minimum spanning tree is :\n";
+		cout << "The maximum spanning tree is :\n";
 
 		for (auto edge : Edges) { 
 			int n1 = edge[1]; 
 			int n2 = edge[2]; 
 			int w = edge[0]; 
-
 
 			if (s.find(n1) != s.find(n2)) { 
                 s.UnionByRank(n1, n2); 
@@ -74,7 +76,7 @@ public:
                 cout <<"Edge " << n1 << " -- " << n2 << " having weight " << w << "\n"; 
             }  
 		}
-		cout << "Minimum Cost Spanning Tree: " << minPath; 
+		cout << "Maximum Cost Spanning Tree: " << minPath; 
 	} 
 }; 
 

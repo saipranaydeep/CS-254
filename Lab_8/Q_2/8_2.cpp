@@ -9,8 +9,8 @@ long long calculateMinCost(int n, int m, int mask, int prev, int col) {
         return 0;
     }
 
-    if (dp[mask][prev][col == 1] != 0) {
-        return dp[mask][prev][col == 1];
+    if (dp[mask][prev][col] != 0) {
+        return dp[mask][prev][col];
     }
 
     long long minimumCost = 1e9;
@@ -18,14 +18,13 @@ long long calculateMinCost(int n, int m, int mask, int prev, int col) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < 2; j++) {
             if (graph[prev][i][j] && !(mask & (1 << i)) && (j != col)) {
-                long long temp = graph[prev][i][j] + 
-                                 calculateMinCost(n, m, mask | (1 << i), i, j);
+                long long temp = graph[prev][i][j] + calculateMinCost(n, m, mask | (1 << i), i, j);
                 minimumCost = min(temp, minimumCost);
             }
         }
     }
 
-    return dp[mask][prev][col == 1] = minimumCost;
+    return dp[mask][prev][col] = minimumCost;
 }
 
 void constructGraph(int m) {
